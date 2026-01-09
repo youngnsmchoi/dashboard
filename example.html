@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>빛과 실 통합관리 펜션</title>
+    <style>
+        body {
+            margin: 0; padding: 40px 0; min-height: 100vh;
+            display: flex; flex-direction: column; align-items: center;
+            /* 배경 어둡게 조절하여 글자 가독성 확보 */
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover; background-attachment: fixed; background-position: center;
+            font-family: 'Pretendard', 'Apple SD Gothic Neo', sans-serif; 
+            color: #ffffff;
+            /* 전역 텍스트 그림자: 글자가 배경에 묻히지 않게 함 */
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+        }
+
+        h1 { 
+            font-size: 2.5rem; margin-bottom: 40px; font-weight: 500; 
+            letter-spacing: 2px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.7);
+        }
+
+        .container { display: flex; flex-direction: column; gap: 30px; }
+        
+        /* 글래스모피즘 카드 스타일 강화 */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.08); /* 투명도 살짝 증가 */
+            backdrop-filter: blur(40px); -webkit-backdrop-filter: blur(40px);
+            border-top: 1px solid rgba(255, 255, 255, 0.4);
+            border-left: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px; padding: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            box-sizing: border-box;
+            cursor: pointer; overflow: hidden;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .glass-card:hover { background: rgba(255, 255, 255, 0.12); }
+
+        .top-grid {
+            display: grid; grid-template-columns: repeat(3, 320px);
+            grid-template-rows: repeat(2, 240px); gap: 20px;
+        }
+        .bottom-grid {
+            display: grid; grid-template-columns: repeat(2, 490px);
+            grid-template-rows: repeat(4, 320px); gap: 20px;
+        }
+
+        /* 슬라이드 상세창 가독성 */
+        .details {
+            max-height: 0; opacity: 0;
+            transition: max-height 0.5s ease, opacity 0.5s ease;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            margin-top: 0; padding-top: 0; 
+            font-size: 1rem; line-height: 1.8; 
+            color: #ffffff;
+        }
+        .glass-card.active .details { max-height: 200px; opacity: 1; margin-top: 25px; padding-top: 20px; }
+
+        .card-title { 
+            font-size: 1.25rem; text-align: center; margin-bottom: 25px; 
+            font-weight: 600; color: #ffffff;
+        }
+        .big-num { 
+            font-size: 3rem; font-weight: 800; text-align: center; margin: 10px 0;
+            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.3));
+        }
+        .point-color { color: #7ef9d4; text-shadow: 0 0 10px rgba(126, 249, 212, 0.5); }
+        .sub-text { font-size: 0.95rem; opacity: 0.9; text-align: center; font-weight: 400; }
+
+        /* 그래프 가독성 강화 */
+        .chart-box { height: 100px; display: flex; align-items: flex-end; gap: 10px; justify-content: center; margin-bottom: 15px; }
+        .bar { width: 30px; background: rgba(255, 255, 255, 0.2); border-radius: 5px 5px 0 0; }
+        .bar.active { background: #7ef9d4; box-shadow: 0 0 15px rgba(126, 249, 212, 0.6); }
+        
+        .line-svg { width: 100%; height: 80px; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.5)); }
+        .line-path { stroke: #7ef9d4; stroke-width: 4; fill: none; stroke-linecap: round; }
+    </style>
+</head>
+<body>
+
+    <h1>빛과 실 통합관리 펜션</h1>
+
+    <div class="container">
+        <div class="top-grid">
+            <div class="glass-card">
+                <div class="card-title">예약 현황</div>
+                <div class="big-num">17</div>
+                <div class="sub-text">금일 총 예약 건수</div>
+            </div>
+            <div class="glass-card"><div class="card-title">객실 관리</div><div class="big-num point-color">정상</div><div class="sub-text">전 객실 정비 완료</div></div>
+            <div class="glass-card"><div class="card-title">실시간 문의</div><div class="big-num">3</div><div class="sub-text">확인 필요한 메시지</div></div>
+            <div class="glass-card"><div class="card-title">매출 현황</div><div class="big-num">₩2,450k</div><div class="sub-text">일일 정산 금액</div></div>
+            <div class="glass-card"><div class="card-title">공지사항</div><div class="big-num">2</div><div class="sub-text">새로운 내부 공지</div></div>
+            <div class="glass-card"><div class="card-title">현황 및 날씨</div><div class="big-num">24°C</div><div class="sub-text">제주 호수 인근 맑음</div></div>
+        </div>
+
+        <div class="bottom-grid">
+            <div class="glass-card" onclick="this.classList.toggle('active')">
+                <div class="card-title">월간 예약률 추이</div>
+                <div class="chart-box">
+                    <div class="bar" style="height: 40%;"></div>
+                    <div class="bar" style="height: 60%;"></div>
+                    <div class="bar active" style="height: 95%;"></div>
+                    <div class="bar" style="height: 80%;"></div>
+                </div>
+                <div class="details">상세 내용: 전월 대비 예약률이 15% 상승했습니다.</div>
+            </div>
+
+            <div class="glass-card" onclick="this.classList.toggle('active')">
+                <div class="card-title">주간 매출 흐름</div>
+                <svg class="line-svg" viewBox="0 0 200 80">
+                    <path class="line-path" d="M10,70 Q40,10 80,50 T190,20" />
+                </svg>
+                <div class="big-num point-color" style="font-size: 1.8rem;">₩12,800,000</div>
+                <div class="details">상세 내용: 연휴 기간 매출이 집중되었습니다.</div>
+            </div>
+
+            <div class="glass-card" onclick="this.classList.toggle('active')">
+                <div class="card-title">에너지 자립률</div>
+                <div class="big-num" style="color: #7ef9d4;">72%</div>
+                <div style="width: 80%; height: 12px; background: rgba(255,255,255,0.15); border-radius: 6px; margin: 0 auto; border: 1px solid rgba(255,255,255,0.2);">
+                    <div style="width: 72%; height: 100%; background: #7ef9d4; border-radius: 6px; box-shadow: 0 0 10px rgba(126,249,212,0.5);"></div>
+                </div>
+                <div class="details">상세 내용: 태양광 에너지가 효율적으로 공급 중입니다.</div>
+            </div>
+
+            <div class="glass-card" onclick="this.classList.toggle('active')">
+                <div class="card-title">고객 만족도 점수</div>
+                <div class="big-num">4.9</div>
+                <div class="sub-text">5.0 만점 기준</div>
+                <div class="details">상세 내용: 친절한 응대 서비스 부문에서 만점을 기록했습니다.</div>
+            </div>
+
+            <div class="glass-card" onclick="this.classList.toggle('active')">
+                <div class="card-title">비품 재고 현황</div>
+                <div class="chart-box">
+                    <div class="bar active" style="height: 90%;"></div>
+                    <div class="bar" style="height: 40%; background: #ff7675;"></div>
+                    <div class="bar active" style="height: 80%;"></div>
+                </div>
+                <div class="details">주의: 빨간색 비품(타월) 재고 보충이 시급합니다.</div>
+            </div>
+
+            <div class="glass-card" onclick="this.classList.toggle('active')">
+                <div class="card-title">주변 명소 혼잡도</div>
+                <div class="big-num" style="font-size: 2rem;">쾌적</div>
+                <div class="sub-text">실시간 방문객 기반</div>
+                <div class="details">인근 숲길 산책로 이용이 매우 원활합니다.</div>
+            </div>
+
+            <div class="glass-card" onclick="this.classList.toggle('active')">
+                <div class="card-title">웹사이트 방문자</div>
+                <svg class="line-svg" viewBox="0 0 200 80">
+                    <path class="line-path" d="M10,60 L50,40 L90,65 L130,20 L190,30" style="stroke: #ffffff;"/>
+                </svg>
+                <div class="details">모바일 유입이 전체의 70%를 차지합니다.</div>
+            </div>
+
+            <div class="glass-card" onclick="this.classList.toggle('active')">
+                <div class="card-title">부대시설 이용률</div>
+                <div class="chart-box">
+                    <div class="bar active" style="height: 80%;"></div>
+                    <div class="bar active" style="height: 35%;"></div>
+                    <div class="bar active" style="height: 65%;"></div>
+                </div>
+                <div class="sub-text">바비큐 / 카페 / 수영장</div>
+                <div class="details">저녁 시간대 바비큐장 예약이 집중되어 있습니다.</div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
