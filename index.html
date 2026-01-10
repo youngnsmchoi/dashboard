@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>SOLARSEADO | 모바일 예약</title>
     <link rel="stylesheet" href="css/theme.css">
 </head>
-<body>
-    <div id="top-notice-bar" style="background-color: #1a1a1a; color: #ffffff; padding: 12px; text-align: center; font-size: 15px; border-bottom: 2px solid #c5a059;">
-    <span style="color: #c5a059; font-weight: bold; margin-right: 8px;">[공지]</span>
 
-    <span id="notice-text">공지사항을 불러오는 중...</span>
+<body>
+    <div id="top-notice-bar"
+        style="background-color: #1a1a1a; color: #ffffff; padding: 12px; text-align: center; font-size: 15px; border-bottom: 2px solid #c5a059;">
+        <span style="color: #c5a059; font-weight: bold; margin-right: 8px;">[공지]</span>
+
+        <span id="notice-text">공지사항을 불러오는 중...</span>
     </div>
     <div id="app-root">
-        
+
         <section id="hero-mount">
             <div class="hero-container">
                 <div class="hero-content">
@@ -28,15 +31,15 @@
                 <div class="booking-container">
                     <div class="booking-item">
                         <label>CHECK IN</label>
-                        <input type="date" id="checkin-date">
+                        <input type="date" id="checkin">
                     </div>
                     <div class="booking-item">
                         <label>CHECK OUT</label>
-                        <input type="date" id="checkout-date">
+                        <input type="date" id="checkout">
                     </div>
-                    <button class="booking-submit-btn">조회하기</button>
+                    <button class="booking-submit-btn" onclick="searchRooms()">조회하기</button>
                 </div>
-            </div>              
+            </div>
         </section>
         <section id="rooms-mount">
             <div class="rooms-grid">
@@ -44,17 +47,21 @@
                     <div class="room-image">
                         <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=600">
                     </div>
-                    <div class="room-info"><h3>Ocean Suite</h3></div>
+                    <div class="room-info">
+                        <h3>Ocean Suite</h3>
+                    </div>
                 </div>
                 <div class="room-card" onclick="openRoomDetail('forest')">
                     <div class="room-image">
                         <img src="https://images.unsplash.com/photo-1578683010236-d716f9759678?q=80&w=600">
                     </div>
-                    <div class="room-info"><h3>Forest Villa</h3></div>
+                    <div class="room-info">
+                        <h3>Forest Villa</h3>
+                    </div>
                 </div>
             </div>
         </section>
-        </div>
+    </div>
 
     <div id="roomModal" class="modal">
         <div class="modal-content">
@@ -64,4 +71,5 @@
     </div>
     <script src="js/engine.js"></script>
 </body>
+
 </html>

@@ -46,7 +46,7 @@ window.onclick = function(event) {
 /* [라벨: 실시간 공지사항 연동] 시작 */
 /* 구글 시트에서 공지 내용을 가져와 화면에 표시합니다. */
 async function loadNotice() {
-    const SHEET_ID = '1IPePYAco5kia1fcsO1IlOmZrBqKzLOpifIaUEliOBow'; // 사장님 시트 ID
+    const SHEET_ID = '1FBV016dKrDNZ7vxkwF-BX7EqFMA2RWK7EKE86SoeKx0'; // 사장님 시트 ID 적용
     const csvUrl = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv`;
 
     try {
@@ -54,28 +54,24 @@ async function loadNotice() {
         const data = await res.text();
         const rows = data.split('\n');
         
-        // 시트의 2행(rows[1])의 데이터를 가져옵니다.
-        let rowData = rows[1].split(',');
-        let rawNotice = rowData[0]; // 첫 번째 칸(내용)
+        // 2행을 가져와서 콤마로 나눕니다.
+        let rowData = rows[1].split(','); 
 
-        // 날짜 형식이 포함되어 있다면 문구만 추출하는 로직
-        if (rawNotice.includes('오전') || rawNotice.includes('오후')) {
-            const parts = rawNotice.split(/\s[오전|오후].*?\s/);
-            rawNotice = parts[parts.length - 1].trim();
-        }
+        // [중요] 사장님 시트의 B2(두 번째 칸)가 공지사항이므로 rowData[1]을 가져옵니다.
+        let realNotice = rowData[1]; 
 
-        const target = document.querySelector('.booking-wrapper');
-        if (target && rawNotice) {
-            const noticeHtml = `
-                <div class="notice-box" style="text-align:center; color:#c5a059; font-size:13px; margin-bottom:12px; font-weight:bold; letter-spacing:-0.5px;">
-                    📢 ${rawNotice}
-                </div>`;
-            target.insertAdjacentHTML('afterbegin', noticeHtml);
+        // 배달 주소를 정확히 'notice-text'로 지정합니다.
+        const target = document.getElementById('notice-text'); 
+
+        if (target && realNotice) {
+            // 시트에 적힌 글자 그대로를 상단 바에 꽂아 넣습니다.
+            target.innerText = realNotice.trim(); 
         }
     } catch (e) {
         console.error("공지사항 로드 실패", e);
     }
 }
+
 /* [라벨: 실시간 공지사항 연동] 끝 */
 
 /* [라벨: 이탈 방지 팝업 제어] 시작 */
