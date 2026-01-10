@@ -57,7 +57,7 @@ async function loadNotice() {
         const rowData = rows[1].split(',');
 
         // [핵심 수정] 무조건 두 번째 칸(B열)만 읽어옵니다.
-        let noticeContent = rowData[1]; 
+        let noticeContent = rowData[3]; 
 
         // [핵심 수정] 상단 바(notice-text)에 글자를 넣습니다.
         const target = document.getElementById('notice-text');
