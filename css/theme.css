@@ -1,0 +1,218 @@
+/* [솔라시도 통합관리: theme.css] */
+
+/* [라벨: 기본 스타일 및 변수 설정] 시작 */
+/* 홈페이지의 기본 색상, 모서리 둥글기, 폰트 등 기초 디자인을 정합니다. */
+:root {
+  --primary-color: #1a1a1a;
+  --secondary-color: #c5a059;
+  --bg-white: #ffffff;
+  --radius-lg: 16px;
+  --radius-md: 8px;
+}
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  margin: 0;
+  background: #fdfdfd;
+  line-height: 1.6;
+  /* 모바일에서 버튼 등을 터치할 때 생기는 파란색 잔상을 제거합니다. */
+  -webkit-tap-highlight-color: transparent;
+}
+/* [라벨: 기본 스타일 및 변수 설정] 끝 */
+
+/* [라벨: 모바일 히어로 디자인] 시작 */
+/* 메인 화면 상단의 큰 이미지와 타이틀 글씨 크기를 모바일 맞춤형으로 작게 조절합니다. */
+.hero-container {
+  height: 45vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80') center/cover;
+  position: relative;
+  color: white;
+}
+
+.hero-main-title {
+  font-size: 2rem;
+  margin-bottom: 8px;
+  letter-spacing: 2px;
+}
+
+.hero-description {
+  font-size: 0.85rem;
+  opacity: 0.8;
+  font-weight: 300;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.hero-content {
+  z-index: 2;
+  text-align: center;
+  padding: 0 20px;
+}
+/* [라벨: 모바일 히어로 디자인] 끝 */
+
+/* [라벨: 모바일 예약 바 디자인] 시작 */
+/* 사장님 요청 수정: booking-wrapper가 booking-container를 상하좌우 50px 여백으로 감싸게 설정 */
+.booking-wrapper {
+  display: inline-block;
+  /* [수정] 박스가 여백만큼 커지도록 max-content로 변경 */
+  width: max-content; 
+  /* [수정] 사장님이 요청하신 100px 여백 */
+  padding: 100px; 
+  /* [수정] 패딩이 박스를 밖으로 키우도록 계산 방식 변경 */
+  box-sizing: content-box; 
+  z-index: 10;
+  position: relative;
+  /* [추가] 여백을 눈으로 확인하기 위해 배경색 추가 */
+  background-color: white; 
+  border-radius: 30px;
+}
+.booking-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+  background: white;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+  border-radius: var(--radius-lg);
+  /* [확인] 중앙 정렬을 위한 설정입니다. */
+  margin: 0 auto; 
+}
+
+.booking-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.booking-item label {
+  font-size: 10px;
+  font-weight: bold;
+  color: var(--secondary-color);
+  letter-spacing: 0.5px;
+}
+
+.booking-item input {
+  padding: 14px;
+  border: 1px solid #f0f0f0;
+  border-radius: var(--radius-md);
+  font-size: 15px;
+  background-color: #fafafa;
+  /* 기본 브라우저 스타일 제거 */
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.booking-submit-btn {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 16px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-weight: bold;
+  width: 100%;
+  margin-top: 8px;
+  font-size: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+/* [라벨: 모바일 예약 바 디자인] 끝 */
+
+/* [라벨: 모바일 객실 카드 디자인] 시작 */
+.rooms-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 40px 16px;
+}
+
+.room-card {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  background: #fff;
+  border: 1px solid #f5f5f5;
+}
+
+.room-image img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.room-info {
+  padding: 18px;
+}
+
+.room-info h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #333;
+}
+/* [라벨: 모바일 객실 카드 디자인] 끝 */
+
+/* [라벨: 모바일 모달 디자인] 시작 */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0; top: 0; width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(4px);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 12vh auto;
+  padding: 24px;
+  border-radius: var(--radius-lg);
+  width: 88%;
+  max-width: 400px;
+  position: relative;
+}
+
+.close-modal {
+  position: absolute;
+  right: 16px; top: 12px;
+  font-size: 26px;
+  cursor: pointer;
+  color: #999;
+}
+/* [라벨: 모바일 모달 디자인] 끝 */
+
+/* [라벨: 데스크탑/태블릿 호환성 정렬] 시작 */
+@media (min-width: 768px) {
+  /* [추가] 껍데기 박스(#booking-mount)를 화면 정중앙으로 보냅니다. */
+  #booking-mount { 
+    text-align: center; 
+    width: 100%;
+  }
+
+  /* [수정] 알맹이 박스가 옆으로 너무 길어지지 않게 조절하고 중앙 정렬합니다. */
+  .booking-container { 
+    flex-direction: row; 
+    align-items: flex-end; 
+    justify-content: center;
+    width: fit-content;
+  }
+
+  .booking-submit-btn { 
+    width: auto; 
+    padding: 14px 40px; 
+  }
+
+  .rooms-grid { 
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+}
+/* [라벨: 데스크탑/태블릿 호환성 정렬] 끝 */
