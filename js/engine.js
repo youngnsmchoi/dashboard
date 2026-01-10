@@ -45,32 +45,32 @@ window.onclick = function(event) {
 
 /* [라벨: 실시간 공지사항 연동] 시작 */
 /* 구글 시트에서 공지 내용을 가져와 화면에 표시합니다. */
+/* engine.js 47행부터 75행까지(loadNotice 함수 전체)를 아래로 교체하세요 */
 async function loadNotice() {
-    const SHEET_ID = '1FBV016dKrDNZ7vxkwF-BX7EqFMA2RWK7EKE86SoeKx0'; // 사장님 시트 ID 적용
+    // 1. 사장님 시트 ID (주소창에서 복사한 것)
+    const SHEET_ID = '1FBV016dKrDNZ7vxkwF-BX7EqFMA2RWK7EKE86SoeKx0'; 
     const csvUrl = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv`;
 
     try {
         const res = await fetch(csvUrl);
         const data = await res.text();
         const rows = data.split('\n');
-        
-        // 2행을 가져와서 콤마로 나눕니다.
-        let rowData = rows[1].split(','); 
+        const rowData = rows[1].split(',');
 
-        // [중요] 사장님 시트의 B2(두 번째 칸)가 공지사항이므로 rowData[1]을 가져옵니다.
-        let realNotice = rowData[1]; 
+        // 2. 만약 공지가 B열에 있다면 rowData[1], A열에 있다면 rowData[0]을 쓰세요.
+        // 현재 날짜가 나온다면 rowData[1]로 바꿔보세요.
+        let noticeContent = rowData[1] || rowData[0]; 
 
-        // 배달 주소를 정확히 'notice-text'로 지정합니다.
-        const target = document.getElementById('notice-text'); 
-
-        if (target && realNotice) {
-            // 시트에 적힌 글자 그대로를 상단 바에 꽂아 넣습니다.
-            target.innerText = realNotice.trim(); 
+        // 3. 상단 검은 바(#notice-text)를 정확히 찾아갑니다.
+        const target = document.getElementById('notice-text');
+        if (target && noticeContent) {
+            target.innerText = noticeContent.trim();
         }
     } catch (e) {
-        console.error("공지사항 로드 실패", e);
+        console.error("공지 로드 실패", e);
     }
 }
+
 
 /* [라벨: 실시간 공지사항 연동] 끝 */
 
