@@ -71,7 +71,31 @@ async function loadNotice() {
     }
 }
 
+async function loadNotice() {
+    const SHEET_ID = '1FBV016dKrDNZ7vxkwF-BX7EqFMA2RWK7EKE86SoeKx0'; 
+    const csvUrl = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv`;
 
+    try {
+        const res = await fetch(csvUrl);
+        const data = await res.text();
+        const rows = data.split('\n');
+        
+        // 2행 데이터를 가져와 콤마로 나눕니다.
+        const rowData = rows[1].split(',');
+
+        // [수정] 무조건 B열(index 1)만 가져오도록 고정합니다.
+        // 사장님 시트의 B2 칸에 적힌 내용이 화면에 나옵니다.
+        let noticeContent = rowData[1]; 
+
+        const target = document.getElementById('notice-text');
+        if (target && noticeContent) {
+            // 양 끝 공백만 제거하고 그대로 출력합니다.
+            target.innerText = noticeContent.trim();
+        }
+    } catch (e) {
+        console.error("공지 로드 실패", e);
+    }
+}
 /* [라벨: 실시간 공지사항 연동] 끝 */
 
 /* [라벨: 이탈 방지 팝업 제어] 시작 */
