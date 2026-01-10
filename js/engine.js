@@ -57,7 +57,7 @@ async function loadNotice() {
         const rowData = rows[1].split(',');
 
         // [핵심 수정] 무조건 두 번째 칸(B열)만 읽어옵니다.
-        let noticeContent = rowData[3]; 
+        let noticeContent = rowData[1]; 
 
         // [핵심 수정] 상단 바(notice-text)에 글자를 넣습니다.
         const target = document.getElementById('notice-text');
@@ -135,16 +135,37 @@ document.addEventListener('mouseleave', (event) => {
 window.onload = loadNotice;
 
 /* [추가] 조회하기 버튼 클릭 시 실행되는 함수 */
-function searchRooms() {
-  const checkin = document.getElementById('checkin').value;
-  const checkout = document.getElementById('checkout').value;
+/* [라벨: 조회 버튼 기능] */
+async function searchRooms() {
+    // 1. 홈페이지 화면에서 날짜 값을 가져옵니다.
+    const checkinValue = document.getElementById('checkin').value;
+    const checkoutValue = document.getElementById('checkout').value;
 
-  if (!checkin || !checkout) {
-    alert('날짜를 선택해주세요.');
-    return;
-  }
+    // 2. 날짜를 선택하지 않았을 경우 알림을 띄웁니다.
+    if (!checkinValue || !checkoutValue) {
+        alert('날짜를 선택해주세요.');
+        return;
+    }
 
-  // 나중에 대시보드 기록을 위해 아래 문장을 남겨둡니다.
-  console.log("조회 시도: " + checkin + " ~ " + checkout);
-  alert('예약 가능한 객실을 조회합니다.');
+    // 3. [연결 완료] 사장님이 방금 만드신 구글 앱스 스크립트 주소입니다.
+    const scriptUrl = 'https://script.google.com/macros/s/AKfycbzKFy523eGh5Bx8PAR2TIHrZ7AexCHEStFyolp2o8fX1dUmbN-qAJsxfI0uz-U7WML7/exec'; 
+
+    try {
+        // 4. 구글 시트로 데이터를 보냅니다.
+        await fetch(scriptUrl, {
+            method: 'POST',
+            mode: 'no-cors', // 구글 보안 정책상 이 설정이 필요합니다.
+            body: JSON.stringify({
+                checkin: checkinValue,
+                checkout: checkoutValue
+            })
+        });
+        
+        // 5. 성공 시 사장님께 알림을 드립니다.
+        alert('조회 기록이 시트에 저장되었습니다!\n입실: ' + checkinValue + '\n퇴실: ' + checkoutValue);
+        
+    } catch (e) {
+        alert('기록 저장 중 오류가 발생했습니다.');
+        console.error("전송 실패 원인:", e);
+    }
 }
