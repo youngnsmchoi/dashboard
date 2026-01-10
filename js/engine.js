@@ -82,7 +82,7 @@ async function loadNotice() {
 
         // [수정] 무조건 B열(index 1)만 가져오도록 고정합니다.
         // 사장님 시트의 B2 칸에 적힌 내용이 화면에 나옵니다.
-        let noticeContent = rowData[1]; 
+        let noticeContent = rowData[3]; 
 
         const target = document.getElementById('notice-text');
         if (target && noticeContent) {
