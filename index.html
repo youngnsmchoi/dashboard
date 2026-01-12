@@ -1,75 +1,64 @@
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>SOLARSEADO | 모바일 예약</title>
-    <link rel="stylesheet" href="css/theme.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>솔라시도 펜션 - 자연 속 힐링</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <div id="top-notice-bar"
-        style="background-color: #1a1a1a; color: #ffffff; padding: 12px; text-align: center; font-size: 15px; border-bottom: 2px solid #c5a059;">
-        <span style="color: #c5a059; font-weight: bold; margin-right: 8px;">[공지]</span>
+    <header class="main-header">
+        <nav class="main-nav">
+            <a href="#" class="logo">솔라시도 펜션</a>
+            <button class="menu-toggle" aria-label="메뉴 열기">☰</button>
+            <ul class="nav-links">
+                <li><a href="#">객실소개</a></li>
+                <li><a href="#">예약하기</a></li>
+                <li><a href="#">오시는 길</a></li>
+                <li><a href="#">커뮤니티</a></li>
+            </ul>
+        </nav>
+    </header>
 
-        <span id="notice-text">공지사항을 불러오는 중...</span>
-    </div>
-    <div id="app-root">
+    <main class="hero-section">
+        <div class="search-container">
+            <h2>솔라시도에서 힐링을 예약하세요</h2>
+            <form class="search-form">
+                <div class="form-row">
+                    <div class="input-group">
+                        <label for="checkin">체크인</label>
+                        <input type="date" id="checkin" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="checkout">체크아웃</label>
+                        <input type="date" id="checkout" required>
+                    </div>
+                </div>
 
-        <section id="hero-mount">
-            <div class="hero-container">
-                <div class="hero-content">
-                    <h1 class="hero-main-title">SOLARSEADO</h1>
-                    <p class="hero-description">당신만의 완벽한 휴식을 예약하세요.</p>
-                </div>
-                <div class="hero-overlay"></div>
-            </div>
-        </section>
-        <section id="booking-mount">
-            <div class="booking-wrapper">
-                <div class="booking-container">
-                    <div class="booking-item">
-                        <label>CHECK IN</label>
-                        <input type="date" id="checkin">
+                <div class="form-row guest-row">
+                    <div class="input-group">
+                        <label for="adults">성인</label>
+                        <input type="number" id="adults" value="2" min="1">
                     </div>
-                    <div class="booking-item">
-                        <label>CHECK OUT</label>
-                        <input type="date" id="checkout">
-                    </div>
-                    <button class="booking-submit-btn" onclick="searchRooms()">조회하기</button>
-                </div>
-            </div>
-        </section>
-        <section id="rooms-mount">
-            <div class="rooms-grid">
-                <div class="room-card" onclick="openRoomDetail('ocean')">
-                    <div class="room-image">
-                        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=600">
-                    </div>
-                    <div class="room-info">
-                        <h3>Ocean Suite</h3>
+                    <div class="input-group">
+                        <label for="children">어린이</label>
+                        <input type="number" id="children" value="0" min="0">
                     </div>
                 </div>
-                <div class="room-card" onclick="openRoomDetail('forest')">
-                    <div class="room-image">
-                        <img src="https://images.unsplash.com/photo-1578683010236-d716f9759678?q=80&w=600">
-                    </div>
-                    <div class="room-info">
-                        <h3>Forest Villa</h3>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
 
-    <div id="roomModal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal()">&times;</span>
-            <div id="modalBody"></div>
+                <button type="submit" class="search-btn">검색하기</button>
+            </form>
         </div>
-    </div>
-    <script src="js/engine.js"></script>
-</body>
+    </main>
 
+    <footer class="main-footer">
+        <address>
+            (주)솔라시도 | 전라남도 해남군 어딘가<br>
+            대표자: 김솔라 | 사업자등록번호: XXX-XX-XXXXX<br>
+            전화: 050-XXXX-XXXX
+        </address>
+        <p>&copy; 2024 Solasido Pension. All rights reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
 </html>

@@ -1,0 +1,224 @@
+/* :root (루트) - 전역 변수 설정 */
+:root {
+    /* Colors (컬러스 - 색상) */
+    --primary-color: #4CAF50;    /* 프라이머리 컬러 - 주요 강조 색상 (초록색 계열) */
+    --secondary-color: #FFC107;  /* 세컨더리 컬러 - 보조 색상 (노란색 계열) */
+    --text-color: #333;          /* 텍스트 컬러 - 기본 글자색 */
+    --white-color: #fff;         /* 화이트 컬러 - 흰색 */
+    --dark-overlay: rgba(0, 0, 0, 0.5); /* 다크 오버레이 - 배경 위에 덮는 어두운 반투명 색상 */
+
+    /* Font Sizes (폰트 사이즈스 - 글자 크기) */
+    --font-base: 16px;           /* 폰트 베이스 - 기본 글자 크기 */
+    --font-lg: 1.8rem;           /* 폰트 라지 - 큰 글자 (헤더용) */
+    --font-md: 1.2rem;           /* 폰트 미디움 - 중간 글자 */
+    --font-sm: 0.9rem;           /* 폰트 스몰 - 작은 글자 */
+
+    /* Spacing (스페이싱 - 여백) */
+    --spacing-xs: 0.5rem;        /* 스페이싱 엑스 스몰 - 아주 작은 여백 */
+    --spacing-sm: 1rem;          /* 스페이싱 스몰 - 작은 여백 */
+    --spacing-md: 1.5rem;        /* 스페이싱 미디움 - 중간 여백 */
+    --spacing-lg: 2rem;          /* 스페이싱 라지 - 큰 여백 */
+
+    /* Border Radius (보더 래디우스 - 테두리 둥글기) */
+    --border-radius-sm: 5px;     /* 보더 래디우스 스몰 - 살짝 둥글게 */
+    --border-radius-md: 10px;    /* 보더 래디우스 미디움 - 중간 둥글게 */
+}
+
+/* Reset Styles (리셋 스타일 - 기본 설정 초기화) */
+* {
+    box-sizing: border-box;      /* 모든 요소의 너비에 패딩과 테두리를 포함시킴 */
+    margin: 0;                   /* 기본 바깥 여백 제거 */
+    padding: 0;                  /* 기본 안쪽 여백 제거 */
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* 기본 글꼴 설정 */
+    font-size: var(--font-base); /* 루트에서 설정한 기본 글자 크기 사용 */
+    color: var(--text-color);    /* 기본 글자색 설정 */
+    line-height: 1.6;            /* 줄 간격 설정 */
+    background-color: var(--white-color); /* 배경색 흰색 */
+    display: flex;               /* 플렉스박스 사용 (레이아웃 정렬용) */
+    flex-direction: column;      /* 세로 방향으로 나열 */
+    min-height: 100vh;           /* 최소 높이를 화면 꽉 차게 설정 */
+}
+
+/* Header & Navigation (헤더 및 네비게이션) */
+.main-header {
+    background-color: var(--white-color); /* 흰색 배경 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 아래쪽에 살짝 그림자 추가 */
+    padding: var(--spacing-sm);  /* 상하좌우 여백 */
+    position: sticky;            /* 스크롤해도 화면 상단에 고정 */
+    top: 0;                      /* 상단 딱 붙임 */
+    z-index: 1000;               /* 다른 요소보다 위에 보이게 함 */
+}
+
+.main-nav {
+    display: flex;               /* 가로로 배치 */
+    justify-content: space-between; /* 양 끝으로 벌림 (로고는 왼쪽, 메뉴는 오른쪽) */
+    align-items: center;         /* 세로 중앙 정렬 */
+    max-width: 1200px;           /* 최대 너비 제한 */
+    margin: 0 auto;              /* 중앙 정렬 */
+}
+
+.logo {
+    font-size: var(--font-md);   /* 중간 크기 글자 */
+    font-weight: bold;           /* 굵게 */
+    color: var(--primary-color); /* 초록색 강조색 */
+    text-decoration: none;       /* 밑줄 제거 */
+}
+
+.menu-toggle {
+    background: none;            /* 배경 제거 */
+    border: none;                /* 테두리 제거 */
+    font-size: var(--font-lg);   /* 큰 크기 (아이콘용) */
+    cursor: pointer;             /* 마우스 올리면 손가락 모양 */
+    color: var(--text-color);    /* 글자색 */
+    padding: var(--spacing-xs);  /* 약간의 여백 */
+}
+
+.nav-links {
+    list-style: none;            /* 리스트 점 제거 */
+    display: none;               /* 기본적으로는 숨김 (모바일 우선) */
+    flex-direction: column;      /* 세로로 나열 */
+    position: absolute;          /* 자유로운 위치 설정 */
+    top: 100%;                   /* 헤더 바로 아래 */
+    left: 0;                     /* 왼쪽 끝 */
+    width: 100%;                 /* 가득 채움 */
+    background-color: var(--white-color); /* 흰색 배경 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+}
+
+.nav-links li a {
+    display: block;              /* 영역 전체 클릭 가능하게 */
+    padding: var(--spacing-sm) var(--spacing-md); /* 여백 주기 */
+    text-decoration: none;       /* 밑줄 제거 */
+    color: var(--text-color);    /* 기본 글자색 */
+    border-bottom: 1px solid #eee; /* 아래쪽 구분선 */
+}
+
+/* 1. 배경 영역 설정 */
+.hero-section {
+    position: relative;          /* 자식 요소(검색창)의 기준점 */
+    width: 100%;
+    height: 60vh;                /* 높이를 60%로 설정 */
+    background-image: url('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1200&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+}
+
+/* 2. 검색창 위치 및 최상단 배치 */
+.search-container {
+    background-color: var(--white-color); /* 흰색 배경 */
+    padding: var(--spacing-lg);          /* 내부 여백 */
+    border-radius: 24px;                 /* 둥근 모서리 */
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2); /* 더 깊은 그림자 */
+    max-width: 400px;                    /* 상자 너비 */
+    width: 90%;                          /* 모바일 대응 너비 */
+
+    /* 1. 왼쪽 중간으로 보내는 핵심 설정 */
+    position: absolute;      /* 배경 사진을 기준으로 자유롭게 이동 */
+    top: 50%;                /* 위에서 50% 지점 (중앙) */
+    left: 5%;                /* 왼쪽에서 5% 지점 */
+    transform: translateY(-50%); /* 정확한 세로 중앙 정렬 보정 */
+    
+    /* 2. 맨 앞으로 나오게 하는 설정 */
+    z-index: 2000;           /* 메뉴(1000)보다 높은 숫자를 주어 안 가려지게 함 */
+}
+
+.search-container h2 {
+    margin-bottom: var(--spacing-md);    /* 제목 아래 여백 */
+    font-size: 1.5rem;                   /* 제목 크기 */
+    text-align: center;                  /* 제목 중앙 정렬 */
+}
+
+.form-row {
+    margin-bottom: 15px;                 /* 각 줄 사이 간격 */
+}
+
+.input-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* [123줄 수정됨] select 글자 삭제 */
+.input-group input {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+}
+
+/* [추가] 인원 선택 칸을 가로로 정렬 */
+.guest-row {
+    display: flex !important;
+    gap: 10px;
+}
+
+.guest-row .input-group {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+.search-btn {
+    width: 100%;
+    padding: 15px;
+    background-color: #ff385c;           /* 포인트 색상 */
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;         /* 마우스 올릴 때 효과 */
+}
+
+.search-btn:hover {
+    background-color: #e31c5f;           /* 마우스 올리면 더 진한 빨간색 */
+}
+
+/* Footer (푸터 - 하단 정보) */
+.main-footer {
+    background-color: #333;              /* 어두운 배경 */
+    color: var(--white-color);           /* 흰색 글자 */
+    text-align: center;                  /* 중앙 정렬 */
+    padding: var(--spacing-md);          /* 여백 */
+    font-size: var(--font-sm);           /* 작은 글자 */
+    margin-top: auto;                    /* 본문이 적어도 아래에 붙어 있게 함 */
+}
+
+.main-footer address {
+    font-style: normal;                  /* 주소 기울임 해제 */
+    margin-bottom: var(--spacing-xs);    /* 아래 여백 */
+}
+
+/* Media Queries (미디어 쿼리 - 화면 크기에 따른 변화) */
+@media (min-width: 768px) {
+    .menu-toggle {
+        display: none;                   /* 큰 화면에선 햄버거 버튼 숨김 */
+    }
+
+    .nav-links {
+        display: flex;                   /* 메뉴 다시 보임 */
+        position: static;                /* 위치 고정 해제 */
+        flex-direction: row;             /* 가로로 나열 */
+        background: none;                /* 배경색 제거 */
+        box-shadow: none;                /* 그림자 제거 */
+        width: auto;                     /* 필요한 만큼만 너비 차지 */
+    }
+
+    .nav-links li a {
+        border-bottom: none;             /* 구분선 제거 */
+        padding: var(--spacing-xs) var(--spacing-sm); /* 여백 조정 */
+    }
+
+    .nav-links li a:hover {
+        color: var(--primary-color);     /* 마우스 올리면 초록색으로 변경 */
+    }
+}
