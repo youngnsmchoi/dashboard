@@ -14,4 +14,25 @@ body { font-family: -apple-system, sans-serif; background: var(--bg); margin: 0;
 
 .chart-section { background: white; padding: 20px; border-radius: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
 .chart-section h2 { font-size: 1rem; margin-bottom: 15px; color: #475569; }
-.chart-wrapper { position: relative; height: 450px; width: 100%; } /* 세로로 긴 차트 영역 */
+.chart-wrapper { position: relative; height: 450px; width: 100%; }
+
+/* --- 사장님 실전 전략 박스 스타일 --- */
+.action-plan-section { margin-top: 25px; margin-bottom: 30px; }
+.action-plan-section h2 { font-size: 1.1rem; color: #1e293b; margin-bottom: 15px; padding-left: 5px; }
+
+.action-card { background: #ffffff; border-radius: 16px; padding: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); border: 1px solid #e2e8f0; }
+
+.action-item { padding: 15px; border-bottom: 1px solid #f1f5f9; }
+.action-item:last-child { border-bottom: none; }
+
+.action-tag { 
+    display: inline-block; padding: 2px 8px; border-radius: 4px; 
+    font-size: 0.7rem; font-weight: bold; margin-bottom: 8px; 
+}
+.action-tag.high { background: #fee2e2; color: #ef4444; }
+.action-tag.mid { background: #fef3c7; color: #d97706; }
+.action-tag.low { background: #dcfce7; color: #16a34a; }
+.action-tag.info { background: #e0e7ff; color: #4f46e5; }
+
+.action-item p { margin: 0; font-size: 0.9rem; color: #475569; line-height: 1.5; }
+.action-item b { color: #1e293b; }
