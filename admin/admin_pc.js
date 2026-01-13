@@ -8,13 +8,13 @@ async function initPCDashboard() {
         // 1. 상단 KPI 및 기본 통계 계산
         updateSummary(data);
         
-        // 2. 각 차트 렌더링 (통합 호출)
-        renderDateChart(data);   // 1순위: 수요 예측
-        renderRoomChart(data);   // 2순위: 객실 선호도
-        renderTimeline(data);    // 3순위: 실시간 로그 ([알 수 없음] 해결)
-        renderGuestChart(data);  // 4순위: 고객군 분석
-        renderLeadChart(data);   // 5순위: 리드타임 분석
-        renderStayChart(data);   // 6순위: 숙박 기간 분석
+        // 2. 각 차트 렌더링
+        renderDateChart(data);   
+        renderRoomChart(data);   // roomType 필드 적용
+        renderTimeline(data);    // 실시간 로그 에러 해결
+        renderGuestChart(data);  
+        renderLeadChart(data);   
+        renderStayChart(data);   
 
         document.getElementById('last-update').innerText = `최종 업데이트: ${new Date().toLocaleString()}`;
     } catch (error) {
@@ -31,8 +31,8 @@ function updateSummary(data) {
     data.forEach(item => {
         const lead = Math.ceil((new Date(item.checkin) - new Date(item.timestamp.split('.')[0])) / (1000*60*60*24));
         if (lead > 0) totalLead += lead;
-        // 필드명 수정: stay_duration
-        totalStay += parseInt(item.stay_duration || item.stayDuration || 1);
+        // stayDuration 필드 유지
+        totalStay += parseInt(item.stayDuration || 1);
     });
 
     document.getElementById('avg-lead').innerText = `${Math.round(totalLead/data.length)}일`;
@@ -56,13 +56,13 @@ function renderDateChart(data) {
     });
 }
 
-// --- [2순위: 객실 선호도 차트] ---
+// --- [2순위: 객실 선호도 차트 - roomType 적용] ---
 function renderRoomChart(data) {
     const counts = {};
     data.forEach(item => { 
-        // 필드명 수정: room_name
-        const rName = item.room_name || item.roomName || "기타";
-        counts[rName] = (counts[rName] || 0) + 1; 
+        // roomName 대신 roomType 사용
+        const rType = item.roomType || "기타";
+        counts[rType] = (counts[rType] || 0) + 1; 
     });
 
     new Chart(document.getElementById('roomChart'), {
@@ -75,25 +75,19 @@ function renderRoomChart(data) {
     });
 }
 
-// --- [3순위: 실시간 타임라인] ---
+// --- [3순위: 실시간 타임라인 - roomType 적용] ---
 function renderTimeline(data) {
     const container = document.getElementById('pc-log-timeline');
-    // 최신순으로 정렬하여 15개 표시
+    // 최신순 정렬 후 15개 표시
     const sortedData = [...data].reverse().slice(0, 15);
     
-    container.innerHTML = sortedData.map(item => {
-        // 필드명 강제 매칭: room_name, stay_duration
-        const room = item.room_name || item.roomName || "알 수 없음";
-        const stay = item.stay_duration || item.stayDuration || 1;
-        
-        return `
-            <div class="log-item" style="padding: 10px; border-bottom: 1px solid #eee;">
-                <span style="color: #3b82f6; font-weight:bold;">[${room}]</span> 
-                ${item.checkin} (${stay}박)
-                <div style="color: #94a3b8; font-size: 0.8rem; margin-top: 4px;">조회일시: ${item.timestamp}</div>
-            </div>
-        `;
-    }).join('');
+    container.innerHTML = sortedData.map(item => `
+        <div class="log-item" style="padding: 10px; border-bottom: 1px solid #eee;">
+            <span style="color: #3b82f6; font-weight:bold;">[${item.roomType || '알 수 없음'}]</span> 
+            ${item.checkin} (${item.stayDuration}박)
+            <div style="color: #94a3b8; font-size: 0.8rem; margin-top: 4px;">조회일시: ${item.timestamp}</div>
+        </div>
+    `).join('');
 }
 
 // --- [4순위: 고객군 분석] ---
@@ -139,8 +133,7 @@ function renderLeadChart(data) {
 function renderStayChart(data) {
     const counts = { '1박': 0, '2박': 0, '3박+': 0 };
     data.forEach(item => {
-        // 필드명 수정: stay_duration
-        const s = parseInt(item.stay_duration || item.stayDuration || 1);
+        const s = parseInt(item.stayDuration || 1);
         if (s === 1) counts['1박']++; 
         else if (s === 2) counts['2박']++; 
         else counts['3박+']++;
