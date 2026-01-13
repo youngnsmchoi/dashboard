@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>숙박 기간 분석 - 솔라시도</title>
+    <link rel="stylesheet" href="analysis_stay.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="analysis-container">
+        <header class="nav-header">
+            <button onclick="location.href='../admin.html'">←</button>
+            <h1>숙박 기간 분석</h1>
+        </header>
+
+        <section class="summary-section">
+            <div class="kpi-card">
+                <small>평균 숙박 기간</small>
+                <div id="avg-stay-duration">계산 중...</div>
+            </div>
+        </section>
+
+        <section class="chart-section">
+            <h2>🌙 숙박 박수별 비중</h2>
+            <div class="chart-wrapper">
+                <canvas id="stayChart"></canvas>
+            </div>
+        </section>
+
+        <section class="action-plan-section">
+            <h2>🎯 숙박 기간 최적화 전략</h2>
+            <div class="action-card">
+                <div class="action-item">
+                    <span class="action-tag high">연박 유도</span>
+                    <p>1박 고객이 많다면 <b>'2박 이상 결제 시 추가 할인'</b> 또는 <b>'연박 전용 바비큐 패키지'</b>를 제안해 보세요.</p>
+                </div>
+                <div class="action-item">
+                    <span class="action-tag mid">운영 효율</span>
+                    <p>연박 고객이 늘어나면 <b>청소 횟수와 인건비가 절감</b>되어 순이익이 크게 향상됩니다.</p>
+                </div>
+                <div class="action-item">
+                    <span class="action-tag info">장기 투숙</span>
+                    <p>3박 이상의 장기 투숙 데이터가 보인다면 <b>'워케이션'</b>이나 <b>'한 달 살기'</b> 마케팅을 고려해 보세요.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="analysis_stay.js"></script>
+</body>
+</html>
