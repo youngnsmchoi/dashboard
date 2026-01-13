@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실시간 모니터링 - 솔라시도</title>
+    <link rel="stylesheet" href="monitor_log.css">
+</head>
+<body>
+    <div class="monitor-container">
+        <header class="nav-header">
+            <button onclick="location.href='../admin.html'">←</button>
+            <h1>실시간 모니터링</h1>
+            <div id="refresh-status" class="status-badge">실시간 업데이트 중</div>
+        </header>
+
+        <section class="action-plan-section">
+            <div class="action-card">
+                <p>💡 <b>사장님 관전 포인트:</b> 지금 막 들어온 검색 로그를 확인하며 고객들의 실시간 관심사를 체감해 보세요!</p>
+            </div>
+        </section>
+
+        <section class="log-section">
+            <h2>⏱️ 최신 검색 로그 (최근 50건)</h2>
+            <div id="log-timeline" class="timeline">
+                <div class="loading">데이터를 불러오는 중...</div>
+            </div>
+        </section>
+    </div>
+    <script src="monitor_log.js"></script>
+</body>
+</html>
