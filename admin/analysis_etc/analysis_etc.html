@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기타 유입 분석 - 솔라시도</title>
+    <link rel="stylesheet" href="analysis_etc.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="analysis-container">
+        <header class="nav-header">
+            <button onclick="location.href='../admin.html'">←</button>
+            <h1>기타 유입 분석</h1>
+        </header>
+
+        <section class="summary-section">
+            <div class="kpi-card">
+                <small>기타 유입 데이터</small>
+                <div id="etc-count">분석 중...</div>
+            </div>
+        </section>
+
+        <section class="chart-section">
+            <h2>🔍 유입 경로/기타 비중</h2>
+            <div class="chart-wrapper">
+                <canvas id="etcChart"></canvas>
+            </div>
+        </section>
+
+        <section class="action-plan-section">
+            <h2>🎯 데이터 경영의 마침표</h2>
+            <div class="action-card">
+                <div class="action-item">
+                    <span class="action-tag high">종합 판단</span>
+                    <p>1순위부터 7순위까지의 데이터를 종합하여 **우리 펜션만의 핵심 고객층**을 정의해 보세요.</p>
+                </div>
+                <div class="action-item">
+                    <span class="action-tag mid">피드백 루프</span>
+                    <p>분석 결과를 바탕으로 수정한 마케팅이 실제 예약으로 이어지는지 **실시간 모니터링**으로 확인하세요.</p>
+                </div>
+                <div class="action-item">
+                    <span class="action-tag info">시스템 완성</span>
+                    <p>이제 모든 분석 도구가 갖춰졌습니다. **데이터에 기반한 의사결정**으로 매출을 극대화하세요!</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="analysis_etc.js"></script>
+</body>
+</html>
