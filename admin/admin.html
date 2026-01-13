@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>솔라시도 관리자 홈</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <div class="admin-container">
+        <header>
+            <h1>솔라시도 통합관리</h1>
+            <p>모바일 전용 마스터 대시보드</p>
+        </header>
+
+        <nav class="admin-menu">
+            <a href="analysis_date/analysis_date.html" class="menu-item">
+                <span class="icon">📅</span>
+                <div class="text">
+                    <strong>수요 예측</strong>
+                    <small>인기 검색 날짜 TOP 10</small>
+                </div>
+            </a>
+            
+            <a href="analysis_room/analysis_room.html" class="menu-item">
+                <span class="icon">🏨</span>
+                <div class="text">
+                    <strong>선호도 분석</strong>
+                    <small>인기 객실 순위</small>
+                </div>
+            </a>
+
+            <a href="monitor_log/monitor_log.html" class="menu-item">
+                <span class="icon">📡</span>
+                <div class="text">
+                    <strong>실시간 모니터링</strong>
+                    <small>최신 검색 로그 확인</small>
+                </div>
+            </a>
+        </nav>
+    </div>
+    <script src="admin.js"></script>
+</body>
+</html>

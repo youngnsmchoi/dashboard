@@ -1,0 +1,23 @@
+:root { --primary: #2563eb; --bg: #f1f5f9; }
+body { font-family: -apple-system, sans-serif; background: var(--bg); margin: 0; }
+
+.admin-container { padding: 20px; }
+
+header { margin-bottom: 30px; text-align: center; }
+header h1 { color: #1e293b; font-size: 1.4rem; margin: 0; }
+header p { color: #64748b; font-size: 0.85rem; margin-top: 5px; }
+
+.admin-menu { display: grid; gap: 12px; }
+
+.menu-item { 
+    display: flex; align-items: center; background: white; 
+    padding: 18px; border-radius: 12px; text-decoration: none;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); color: #334155;
+    transition: transform 0.1s;
+}
+
+.menu-item:active { transform: scale(0.98); background: #f8fafc; }
+
+.menu-item .icon { font-size: 1.5rem; margin-right: 15px; }
+.menu-item strong { display: block; font-size: 1rem; margin-bottom: 2px; }
+.menu-item small { font-size: 0.75rem; color: #94a3b8; }

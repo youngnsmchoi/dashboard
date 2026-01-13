@@ -1,0 +1,17 @@
+:root { --primary: #2563eb; --bg: #f8fafc; }
+body { font-family: -apple-system, sans-serif; background: var(--bg); margin: 0; padding: 0; }
+
+.analysis-container { padding: 15px; }
+
+.nav-header { display: flex; align-items: center; margin-bottom: 20px; }
+.nav-header button { background: none; border: none; font-size: 1.5rem; margin-right: 10px; cursor: pointer; }
+.nav-header h1 { font-size: 1.1rem; margin: 0; }
+
+.summary-section { margin-bottom: 20px; }
+.kpi-card { background: white; padding: 15px; border-radius: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+.kpi-card small { color: #64748b; font-size: 0.8rem; }
+.kpi-card div { font-size: 1.3rem; font-weight: bold; color: var(--primary); margin-top: 5px; }
+
+.chart-section { background: white; padding: 15px; border-radius: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+.chart-section h2 { font-size: 0.95rem; margin-bottom: 15px; color: #334155; }
+.chart-wrapper { position: relative; height: 400px; width: 100%; } /* 모바일 세로 차트 높이 */

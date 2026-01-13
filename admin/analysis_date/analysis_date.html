@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>수요 예측 - 솔라시도</title>
+    <link rel="stylesheet" href="analysis_date.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="analysis-container">
+        <header class="nav-header">
+            <button onclick="history.back()">←</button>
+            <h1>수요 예측 분석</h1>
+        </header>
+
+        <section class="summary-section">
+            <div class="kpi-card">
+                <small>분석 데이터</small>
+                <div id="total-count">로드 중...</div>
+            </div>
+        </section>
+
+        <section class="chart-section">
+            <h2>🔥 인기 검색 날짜 TOP 10</h2>
+            <div class="chart-wrapper">
+                <canvas id="dateChart"></canvas>
+            </div>
+        </section>
+    </div>
+    <script src="analysis_date.js"></script>
+</body>
+</html>
