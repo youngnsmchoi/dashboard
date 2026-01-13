@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>선호도 분석 - 솔라시도</title>
+    <link rel="stylesheet" href="analysis_room.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="analysis-container">
+        <header class="nav-header">
+            <button onclick="location.href='../admin.html'">←</button>
+            <h1>객실 선호도 분석</h1>
+        </header>
+
+        <section class="chart-section">
+            <h2>🏠 객실 타입별 조회 비중</h2>
+            <div class="chart-wrapper">
+                <canvas id="roomChart"></canvas>
+            </div>
+        </section>
+
+        <section class="action-plan-section">
+            <h2>🎯 객실 운영 실전 전략</h2>
+            <div class="action-card">
+                <div class="action-item">
+                    <span class="action-tag high">인기 객실</span>
+                    <p>조회수가 높은 객실은 <b>사진을 최신화</b>하거나 테라스 꾸미기 등 추가 투자를 고려해 보세요.</p>
+                </div>
+                <div class="action-item">
+                    <span class="action-tag mid">비인기 객실</span>
+                    <p>조회가 저조한 객실은 <b>'가성비 패키지'</b>를 구성하거나 평일 파격 할인을 배치해 보세요.</p>
+                </div>
+                <div class="action-item">
+                    <span class="action-tag info">공통 전략</span>
+                    <p>인기 객실의 인테리어 컨셉을 참고하여 <b>전체 객실의 만족도</b>를 높이는 방향을 잡아보세요.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="list-section">
+            <h2>📊 상세 순위</h2>
+            <div id="room-list" class="room-list"></div>
+        </section>
+    </div>
+    <script src="analysis_room.js"></script>
+</body>
+</html>
