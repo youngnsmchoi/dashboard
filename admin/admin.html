@@ -2,12 +2,6 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <script>
-        // [보안] 로그인 상태가 아니면 즉시 인증 페이지로 이동시킵니다.
-        if (sessionStorage.getItem("isLoggedIn") !== "true") {
-            location.href = "index.html";
-        }
-    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>솔라시도 관리자 홈</title>
     <link rel="stylesheet" href="admin.css">
@@ -64,23 +58,7 @@
                 <span class="menu-arrow">〉</span>
             </div>
         </nav>
-
-        <div style="padding: 20px; margin-top: 10px;">
-            <button onclick="logout()" style="width: 100%; padding: 15px; background: #ef4444; color: white; border: none; border-radius: 12px; font-weight: bold; font-size: 1rem; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-                🔓 안전하게 로그아웃
-            </button>
-        </div>
     </div>
-
-    <script>
-        // 로그아웃 함수: 인증 정보를 삭제하고 로그인 페이지로 보냅니다.
-        function logout() {
-            if(confirm("로그아웃 하시겠습니까?")) {
-                sessionStorage.removeItem("isLoggedIn");
-                location.href = "index.html";
-            }
-        }
-    </script>
     <script src="admin.js"></script>
 </body>
 </html>
