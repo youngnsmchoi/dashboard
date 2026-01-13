@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>고객군 분석 - 솔라시도</title>
+    <link rel="stylesheet" href="analysis_guest.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="analysis-container">
+        <header class="nav-header">
+            <button onclick="location.href='../admin.html'">←</button>
+            <h1>고객군 분석</h1>
+        </header>
+
+        <section class="chart-section">
+            <h2>👨‍👩‍👧‍👦 성인 vs 아동 구성비</h2>
+            <div class="chart-wrapper">
+                <canvas id="guestChart"></canvas>
+            </div>
+        </section>
+
+        <section class="action-plan-section">
+            <h2>🎯 사장님을 위한 타겟팅 전략</h2>
+            <div class="action-card">
+                <div class="action-item">
+                    <span class="action-tag high">가족 단위</span>
+                    <p>아동 동반 비율이 높다면 <b>아이용 식기나 보드게임</b> 비치를 강조해 보세요.</p>
+                </div>
+                <div class="action-item">
+                    <span class="action-tag mid">커플/성인</span>
+                    <p>성인 비율이 압도적이라면 <b>와인 세트나 감성 조명</b> 패키지가 효과적입니다.</p>
+                </div>
+                <div class="action-item">
+                    <span class="action-tag info">운영 팁</span>
+                    <p>평균 인원수에 맞춰 <b>추가 침구류 재고</b>를 미리 파악해 두시면 편리합니다.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="analysis_guest.js"></script>
+</body>
+</html>
