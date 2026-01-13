@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <script>
+        // 무단 접속 차단 보안 로직
         if (sessionStorage.getItem("isLoggedIn") !== "true") {
             alert("⚠️ 접근 권한이 없습니다. 로그인 페이지로 이동합니다.");
-            location.href = "index.html"; // 로그인 페이지 파일명 확인
+            location.href = "index.html";
         }
     </script>    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,6 +22,7 @@
                 <ul>
                     <li class="active">📊 통합 대시보드</li>
                     <li onclick="location.href='admin.html'">📱 모바일 버전 이동</li>
+                    <li onclick="logout()" style="color: #f87171; margin-top: 30px; border-top: 1px solid #334155; padding-top: 20px;">🔓 로그아웃</li>
                 </ul>
             </nav>
             <div class="status-box">
@@ -81,6 +83,14 @@
             </section>
         </main>
     </div>
+    <script>
+        function logout() {
+            if(confirm("안전하게 로그아웃하시겠습니까?")) {
+                sessionStorage.removeItem("isLoggedIn");
+                location.href = "index.html";
+            }
+        }
+    </script>
     <script src="admin_pc.js"></script>
 </body>
 </html>
