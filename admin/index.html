@@ -20,16 +20,21 @@
     </div>
 
     <script>
-        function checkPw() {
-            const pw = document.getElementById('adminPw').value;
-            // 여기에 사장님만 아는 암호를 설정하세요 (예: 1234)
-            if (pw === "1234") { 
-                sessionStorage.setItem("isLoggedIn", "true");
-                location.href = "admin.html"; // 모바일 메인으로 이동
+    function checkPw() {
+        const pw = document.getElementById('adminPw').value;
+        if (pw === "1234") { 
+            sessionStorage.setItem("isLoggedIn", "true");
+            
+            // 기기 크기(너비)를 확인하여 PC와 모바일 분기
+            if (window.innerWidth > 1024) {
+                location.href = "admin_pc.html"; // PC면 통합 대시보드로
             } else {
-                alert("암호가 틀렸습니다.");
+                location.href = "admin.html"; // 모바일이면 기존 메뉴로
             }
+        } else {
+            alert("암호가 틀렸습니다.");
         }
+    }      
     </script>
 </body>
 </html>
