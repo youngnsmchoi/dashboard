@@ -1,0 +1,25 @@
+:root { --primary: #2563eb; --bg: #f8fafc; }
+body { font-family: -apple-system, sans-serif; background: var(--bg); margin: 0; padding: 0; }
+.analysis-container { padding: 15px; }
+
+.nav-header { display: flex; align-items: center; margin-bottom: 20px; padding: 10px 0; }
+.nav-header button { background: none; border: none; font-size: 1.5rem; margin-right: 15px; cursor: pointer; color: #334155; }
+.nav-header h1 { font-size: 1.2rem; margin: 0; color: #1e293b; }
+
+.summary-section { margin-bottom: 20px; }
+.kpi-card { background: white; padding: 15px; border-radius: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border-left: 5px solid #8b5cf6; }
+.kpi-card small { color: #64748b; font-size: 0.8rem; }
+.kpi-card div { font-size: 1.3rem; font-weight: bold; color: #8b5cf6; margin-top: 5px; }
+
+.chart-section { background: white; padding: 20px; border-radius: 16px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+.chart-wrapper { position: relative; height: 300px; width: 100%; }
+
+.action-plan-section { margin-bottom: 30px; }
+.action-card { background: #ffffff; border-radius: 16px; padding: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); border: 1px solid #e2e8f0; }
+.action-item { padding: 15px; border-bottom: 1px solid #f1f5f9; }
+.action-item:last-child { border-bottom: none; }
+.action-tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: bold; margin-bottom: 8px; }
+.action-tag.high { background: #e0e7ff; color: #4338ca; }
+.action-tag.mid { background: #fef3c7; color: #d97706; }
+.action-tag.info { background: #dcfce7; color: #16a34a; }
+.action-item p { margin: 0; font-size: 0.9rem; color: #475569; line-height: 1.5; }
