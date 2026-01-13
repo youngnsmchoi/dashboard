@@ -1,0 +1,38 @@
+:root { --primary: #2563eb; --sidebar: #1e293b; --bg: #f1f5f9; }
+body, html { margin: 0; padding: 0; height: 100%; font-family: -apple-system, sans-serif; background: var(--bg); }
+
+.pc-dashboard { display: flex; height: 100vh; }
+
+/* 사이드바 */
+.sidebar { width: 240px; background: var(--sidebar); color: white; padding: 20px; display: flex; flex-direction: column; }
+.logo { font-size: 1.5rem; font-weight: bold; margin-bottom: 40px; color: #60a5fa; }
+nav ul { list-style: none; padding: 0; }
+nav li { padding: 12px 15px; border-radius: 8px; cursor: pointer; margin-bottom: 10px; transition: 0.3s; }
+nav li.active { background: var(--primary); }
+nav li:hover { background: #334155; }
+
+/* 메인 콘텐츠 */
+.content { flex: 1; padding: 30px; overflow-y: auto; }
+.main-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+#last-update { color: #64748b; font-size: 0.9rem; }
+
+/* KPI 카드 */
+.kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 30px; }
+.kpi-card { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+.kpi-card small { color: #64748b; font-weight: bold; }
+.kpi-card div { font-size: 1.8rem; font-weight: bold; margin-top: 10px; color: var(--primary); }
+
+/* 차트 그리드 레이아웃 */
+.dashboard-grid { display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: 350px; gap: 20px; }
+.chart-box { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+.chart-box.tall { grid-row: span 2; }
+.chart-box h3 { margin: 0 0 20px 0; font-size: 1.1rem; color: #1e293b; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; }
+
+/* PC용 타임라인 */
+.pc-timeline { height: calc(100% - 60px); overflow-y: auto; font-size: 0.85rem; }
+.log-item { padding: 10px; border-bottom: 1px solid #f1f5f9; }
+.log-item:last-child { border-bottom: none; }
+
+.status-box { margin-top: auto; font-size: 0.8rem; color: #94a3b8; display: flex; align-items: center; gap: 8px; }
+.pulse { width: 8px; height: 8px; background: #10b981; border-radius: 50%; animation: pulse 2s infinite; }
+@keyframes pulse { 0% { transform: scale(0.95); opacity: 0.7; } 70% { transform: scale(1.1); opacity: 0.3; } 100% { transform: scale(0.95); opacity: 0.7; } }

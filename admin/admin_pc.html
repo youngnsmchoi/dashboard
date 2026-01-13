@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>솔라시도 통합 관리 시스템 (PC)</title>
+    <link rel="stylesheet" href="admin_pc.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="pc-dashboard">
+        <aside class="sidebar">
+            <div class="logo">솔라시도 PC</div>
+            <nav>
+                <ul>
+                    <li class="active">📊 통합 대시보드</li>
+                    <li onclick="location.href='admin.html'">📱 모바일 버전 이동</li>
+                </ul>
+            </nav>
+            <div class="status-box">
+                <div class="pulse"></div> 실시간 관제 중
+            </div>
+        </aside>
+
+        <main class="content">
+            <header class="main-header">
+                <h1>마스터 관제 대시보드</h1>
+                <div id="last-update">업데이트: 로딩 중...</div>
+            </header>
+
+            <section class="kpi-grid">
+                <div class="kpi-card">
+                    <small>전체 분석 건수</small>
+                    <div id="total-count">-</div>
+                </div>
+                <div class="kpi-card">
+                    <small>평균 리드타임</small>
+                    <div id="avg-lead">-</div>
+                </div>
+                <div class="kpi-card">
+                    <small>평균 숙박일</small>
+                    <div id="avg-stay">-</div>
+                </div>
+                <div class="kpi-card">
+                    <small>주요 유입 요일</small>
+                    <div id="top-day">-</div>
+                </div>
+            </section>
+
+            <section class="dashboard-grid">
+                <div class="chart-box tall">
+                    <h3>🔥 인기 검색 날짜 TOP 10</h3>
+                    <canvas id="dateChart"></canvas>
+                </div>
+                <div class="chart-box tall">
+                    <h3>⏱️ 실시간 모니터링</h3>
+                    <div id="pc-log-timeline" class="pc-timeline"></div>
+                </div>
+                <div class="chart-box">
+                    <h3>🏠 객실 조회 비중</h3>
+                    <canvas id="roomChart"></canvas>
+                </div>
+                <div class="chart-box">
+                    <h3>👨‍👩‍👧‍👦 고객 구성비</h3>
+                    <canvas id="guestChart"></canvas>
+                </div>
+                <div class="chart-box">
+                    <h3>⏳ 예약 시점 분포</h3>
+                    <canvas id="leadChart"></canvas>
+                </div>
+                <div class="chart-box">
+                    <h3>🌙 숙박 기간 비중</h3>
+                    <canvas id="stayChart"></canvas>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="admin_pc.js"></script>
+</body>
+</html>
