@@ -2,6 +2,12 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
+    <script>
+        if (sessionStorage.getItem("isLoggedIn") !== "true") {
+            alert("⚠️ 접근 권한이 없습니다. 로그인 페이지로 이동합니다.");
+            location.href = "index.html"; // 로그인 페이지 파일명 확인
+        }
+    </script>    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>솔라시도 통합 관리 시스템 (PC)</title>
     <link rel="stylesheet" href="admin_pc.css">

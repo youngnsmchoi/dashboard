@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>솔라시도 관리자 인증</title>
+    <style>
+        body { background: #1e293b; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; font-family: sans-serif; }
+        .login-box { background: white; padding: 30px; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); text-align: center; width: 300px; }
+        h2 { color: #1e293b; margin-bottom: 20px; }
+        input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; font-size: 1rem; }
+        button { width: 100%; padding: 12px; background: #2563eb; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="login-box">
+        <h2>🔒 관리자 인증</h2>
+        <input type="password" id="adminPw" placeholder="암호를 입력하세요" onkeypress="if(event.keyCode==13) checkPw()">
+        <button onclick="checkPw()">접속하기</button>
+    </div>
+
+    <script>
+        function checkPw() {
+            const pw = document.getElementById('adminPw').value;
+            // 여기에 사장님만 아는 암호를 설정하세요 (예: 1234)
+            if (pw === "1234") { 
+                sessionStorage.setItem("isLoggedIn", "true");
+                location.href = "admin.html"; // 모바일 메인으로 이동
+            } else {
+                alert("암호가 틀렸습니다.");
+            }
+        }
+    </script>
+</body>
+</html>
